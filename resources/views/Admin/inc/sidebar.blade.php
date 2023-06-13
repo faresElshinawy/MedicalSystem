@@ -15,7 +15,11 @@
           <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">
+            @auth
+                {{Auth::guard('admin')->user()->name}}
+            @endauth
+        </a>
         </div>
       </div>
 
@@ -47,7 +51,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('admin.admins')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon far fa-circle text-info"></i>
                   <p>All Admins</p>
                 </a>
               </li>
@@ -61,73 +65,88 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
+                <i class="nav-icon far fa-plus-square"></i>
               <p>
-                Pages
+                Specialties
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../examples/invoice.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Invoice</p>
+                <a href="{{route('admin.specialties.all')}}" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                  <p>All Specialties</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../examples/profile.html" class="nav-link">
+                <a href="{{route('admin.specialties.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Profile</p>
+                  <p>Add Specialty</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon far fa-heart"></i>
+              <p>
+                Doctors
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.doctors.all')}}" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                  <p>All Doctors</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../examples/e-commerce.html" class="nav-link">
+                <a href="{{route('admin.doctors.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>E-commerce</p>
+                  <p>Add Doctor</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon far fa-user"></i>
+              <p>
+                Patients
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.patients.all')}}" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                  <p>All Patients</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../examples/projects.html" class="nav-link">
+                <a href="{{route('admin.patients.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Projects</p>
+                  <p>Add Patient</p>
                 </a>
               </li>
+            </ul>
+        </li>
               <li class="nav-item">
-                <a href="../examples/project-add.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Add</p>
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-file"></i>
+                  <p>
+                    Examination
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/project-edit.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Edit</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/project-detail.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Detail</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/contacts.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Contacts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/faq.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>FAQ</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/contact-us.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Contact us</p>
-                </a>
-              </li>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('admin.examination.all')}}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-info"></i>
+                      <p>All Examination</p>
+                    </a>
+                  </li>
             </ul>
           </li>
       </nav>

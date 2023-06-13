@@ -18,10 +18,11 @@ return new class extends Migration
             $table->string('password');
             $table->integer('age');
             $table->date('birthdate');
-            $table->string('image');
-            $table->string('address');
+            $table->string('image')->nullable();
+            $table->string('address')->nullable();
             $table->foreignId('doctor_id')->references('id')->on('doctors')->cascadeOnDelete();
             $table->enum('status',['isset','deleted']);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

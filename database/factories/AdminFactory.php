@@ -21,7 +21,7 @@ class AdminFactory extends Factory
             'email'=>$this->faker->email,
             'password'=>$this->faker->password,
             'phone'=>1100162900,
-            'image'=>$this->faker->imageUrl(640,480,'admin'),
+            'image'=>'6486750aded784.31507595_WhatsApp Image 2023-03-15 at 1.41.49 PM (1).jpeg',
             'type'=>'admin'
         ];
     }

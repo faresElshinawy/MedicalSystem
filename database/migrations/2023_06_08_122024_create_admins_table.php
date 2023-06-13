@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('phone');
             $table->string('image')->nullable();
             $table->enum('type',['admin']);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

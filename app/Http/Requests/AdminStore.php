@@ -26,7 +26,8 @@ class AdminStore extends FormRequest
         return [
             $this->validate(array_merge(Admin::rules(),[
                 'name'=>'required|min:3|max:255|unique:admins,name',
-                'email'=>'required|email|unique:admins,email'
+                'email'=>'required|email|unique:admins,email',
+                'password'=>'required|min:6|max:255',
             ]))
         ];
     }

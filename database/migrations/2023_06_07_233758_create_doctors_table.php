@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('description');
             $table->enum('status',['isset','deleted']);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
