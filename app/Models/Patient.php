@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Patient extends Model
 {
@@ -27,7 +28,7 @@ class Patient extends Model
         return $this->belongsTo(Doctor::class);
     }
 
-    public function Examination()
+    public function examination()
     {
         return $this->hasMany(Examination::class);
     }
@@ -38,8 +39,13 @@ class Patient extends Model
             'birthdate'=>'required|date_format:Y-m-d',
             'address'=>'nullable|max:255',
             'image'=>'nullable|max:20248|mimes:jpeg,jpg,png,gif',
-            'doctor'=>'required|exists:doctors,id|gt:0'
+            'doctor'=>Auth::guard('doctor')->check() ? 'nullable|exists:doctors,id|gt:0':'required|exists:doctors,id|gt:0'
         ];
+    }
+
+    public function note()
+    {
+        return $this->hasMany(Note::class);
     }
 
 }

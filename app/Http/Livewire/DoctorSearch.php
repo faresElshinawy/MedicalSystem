@@ -21,7 +21,7 @@ class DoctorSearch extends Component
         {
             $query->where('name','like',"%{$this->search}%")->orWhere('phone','like',"%{$this->search}%");
         }
-        return view('livewire.doctor-search',['doctors'=>$query->with('Specialty')->paginate(15)]);
+        return view('livewire.doctor-search',['doctors'=>$query->with('specialty')->paginate(15)]);
     }
 
     public function updated($property)

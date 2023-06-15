@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Doctor;
+use App\Traits\GetAge;
 use App\Models\Patient;
+use App\Traits\ImageUpload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\PatientStoreRequest;
 use App\Http\Requests\PatientUpdateRequest;
-use App\Traits\GetAge;
-use App\Traits\ImageUpload;
 
 class PatientController extends Controller
 {
@@ -31,7 +32,7 @@ class PatientController extends Controller
     {
         Patient::create([
             'name'=>$request->name,
-            'password'=>$request->password,
+            'password'=>Hash::make($request->password),
             'phone'=>$request->phone,
             'birthdate'=>$request->birthdate,
             'age'=>$this->getAge($request->birthdate)->age,
@@ -52,7 +53,7 @@ class PatientController extends Controller
     {
         $patient->update([
             'name'=>$request->name,
-            'password'=>$request->password,
+            'password'=>$request->password ? Hash::make($request->password) : $patient->password,
             'phone'=>$request->phone,
             'birthdate'=>$request->birthdate,
             'age'=>$this->getAge($request->birthdate)->age,

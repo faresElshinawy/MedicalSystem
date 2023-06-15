@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('time');
             $table->string('title')->nullable();
             $table->string('description')->nullable();
-            $table->string('files')->nullable();
+            $table->string('file')->nullable();
             $table->integer('offer')->default(0);
             $table->timestamps();
         });

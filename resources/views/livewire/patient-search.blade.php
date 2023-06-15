@@ -50,7 +50,7 @@
                 <img src="https://placehold.co/600x400.png" class="img-fluid" width="90" height="50" alt="">
                 @endif
             </td>
-              <td>{{'0'.$patient->phone}}</td>
+              <td>{{$patient->phone}}</td>
               <td>
                 <div class="btn-group">
                 <button type="button" class="btn btn-info">
@@ -63,12 +63,23 @@
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu" role="menu" style="">
-                  <a class="dropdown-item" href="{{route('admin.patients.edit',['patient'=>$patient->id])}}">Edit</a>
-                  <form action="{{route('admin.patients.delete',['patient'=>$patient->id])}}" method="POST">
-                    @csrf
-                    @method('delete')
-                      <button type='submit' class="dropdown-item">Delete</button>
-                  </form>
+                    @if (Auth::guard('doctor')->check())
+                        {{-- <a class="dropdown-item" href="{{route('doctor.patients.edit',['patient'=>$patient->id])}}">Edit</a> --}}
+                        <a class="dropdown-item" href="{{route('doctor.patient.notes.all',['patient'=>$patient->id])}}">All Notes</a>
+                        <a class="dropdown-item" href="{{route('doctor.patient.notes.create',['patient'=>$patient->id])}}">Add Note</a>
+                        <form action="{{route('doctor.patients.delete',['patient'=>$patient->id])}}" method="POST">
+                        @csrf
+                        @method('delete')
+                            <button type='submit' class="dropdown-item">Delete</button>
+                        </form>
+                    @else
+                        <a class="dropdown-item" href="{{route('admin.patients.edit',['patient'=>$patient->id])}}">Edit</a>
+                        <form action="{{route('admin.patients.delete',['patient'=>$patient->id])}}" method="POST">
+                        @csrf
+                        @method('delete')
+                            <button type='submit' class="dropdown-item">Delete</button>
+                        </form>
+                    @endif
                 </div>
               </div>
             </td>

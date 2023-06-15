@@ -13,6 +13,11 @@ use App\Http\Requests\AdminLoginRequest;
 class LoginController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('guest::admin')->except('logout');
+    }
+
     public function index()
     {
         if(Auth::check())
@@ -28,7 +33,7 @@ class LoginController extends Controller
 
         $credentials = $request->only(['email','password']);
         if(Auth::guard('admin')->attempt($credentials)){
-            toast('Loged in successfully','success');
+            toast('Welcome '.Auth::guard('admin')->user()->name,'success');
             return redirect()->intended('admin/statistics');
         }
         session()->flush();
@@ -36,12 +41,12 @@ class LoginController extends Controller
         return redirect()->back();
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout();
-        session()->flush();
-        session()->regenerate();
-        session()->regenerateToken();
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerate();
+        $request->session()->regenerateToken();
         return redirect()->route('admin.login');
     }
 }

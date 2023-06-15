@@ -37,7 +37,7 @@
               <td>{{$doctor->name}}</td>
               <td>{{$doctor->email}}</td>
               {{-- <td>{{$doctor->password}}</td> --}}
-              <td><textarea cols="30" rows="3" class="p-2" disabled>{{$doctor->description}}</textarea></td>
+              <td><textarea class="border-0 bg-white" cols="30" rows="3" class="p-2" disabled>{{$doctor->description}}</textarea></td>
               <td>{{$doctor->specialty->name}}</td>
               <td>
                 @if ($doctor->image)

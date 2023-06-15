@@ -8,11 +8,14 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('admin.Statistics.all')}}" class="nav-link">Home</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{route('admin.profile.show',['admin'=>Auth::guard('admin')->user()->id])}}" class="nav-link text-info">profile</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
+      {{-- <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
           <i class="fas fa-search"></i>
@@ -32,7 +35,7 @@
             </div>
           </form>
         </div>
-      </li>
+      </li> --}}
 
       <!-- Messages Dropdown Menu -->
       {{-- <li class="nav-item dropdown">
@@ -129,7 +132,6 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <form action="{{route('admin.logout')}}" method="post">
                         @csrf
-                        @method('delete')
                         <button type="submit" class="btn btn-danger">logout</button>
                     </form>
                   </li>

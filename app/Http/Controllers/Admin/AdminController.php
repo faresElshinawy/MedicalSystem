@@ -45,10 +45,11 @@ class AdminController extends Controller
 
     public function update(AdminUpdate $request,Admin $admin)
     {
+        $passowrd = Hash::make($request->password);
         $admin->update([
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>Hash::make($request->password)??$admin->password,
+            'password'=>$password??$admin->password,
             'phone'=>$request->phone,
             'image'=>$this->upload($request,Admin::$uploadPath,$admin->image)
         ]);

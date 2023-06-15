@@ -5,11 +5,15 @@ namespace App\Models;
 use App\Models\Specialty;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Doctor extends Model
+class Doctor extends Authenticatable
 {
     use HasFactory;
-
+    use Notifiable;
+    protected $guard = 'doctor';
+    protected $hidden = ['password','remember_token'];
     protected $fillable = [
         'name',
         'email',
@@ -46,6 +50,11 @@ class Doctor extends Model
 
     public function examination()
     {
-        return $this->belongsToMany(Examination::class);
+        return $this->hasMany(Examination::class);
+    }
+
+    public function note()
+    {
+        return $this->hasMany(Note::class);
     }
 }

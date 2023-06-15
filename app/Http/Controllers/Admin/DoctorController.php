@@ -31,7 +31,7 @@ class DoctorController extends Controller
         Doctor::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>$request->password,
+            'password'=>Hash::make($request->password),
             'image'=>$this->upload($request,Doctor::$uploadPath),
             'description'=>$request->description,
             'specialty_id'=>$request->specialty,
@@ -52,7 +52,7 @@ class DoctorController extends Controller
         $doctor->update([
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>Hash::make($request->password) ?? $doctor->password,
+            'password'=>$request->password ? Hash::make($request->password) : $doctor->password,
             'image'=>$this->upload($request,Doctor::$uploadPath,$doctor->image),
             'description'=>$request->description,
             'specialty_id'=>$request->specialty,

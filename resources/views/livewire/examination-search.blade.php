@@ -19,7 +19,7 @@
                         @if ($selectedFilter && $selectedFilter != '3')
                         <label class="d-block">filter by</label>
                         <select class="form-control select2 select2-hidden-accessible col-3 "  wire:model='secondFilterValue' style="width: 100%;"   aria-hidden="true">
-                            <option selected="selected" selected disabled>Select filter value</option>
+                            <option selected="selected" selected >Select filter value</option>
                             @foreach ($selectedFilterResults as $value)
                             <option value='{{$value->id}}'>{{$value->name}}</option>
                             @endforeach
@@ -44,11 +44,11 @@
     </div>
     <div class="card">
         <div class="card-header">
-          <h3 class="card-title">examinations Table</h3>
+          <h3 class="card-title text-info">examinations Table</h3>
 
           <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
-              <input type="text" wire:model.lazy='search' wire:change='results()' name="table_search" class="form-control float-right" placeholder="Search">
+              <input type="text" wire:model.lazy='search' name="table_search" class="form-control float-right" placeholder="Search">
 
               {{-- <div class="input-group-append">
                 <button type="submit" class="btn btn-default">
@@ -73,7 +73,7 @@
                     <th>Description</th>
                     <th>file</th>
                     <th>offer</th>
-                    {{-- <th>Action</th> --}}
+                    <th>Action</th>
                   </tr>
             </thead>
             <tbody>
@@ -83,19 +83,19 @@
                   <td>{{$result->Patient->name}}</td>
                   <td>{{$result->doctor->name}}</td>
                   <td>{{$result->price}}</td>
-                  <td>{{$result->status}}</td>
+                  <td><span class="badge badge-{{($result->status == 'pending' ? 'warning' : ($result->status == 'cancel' ? 'danger' : 'info'))}}">{{$result->status}}</span>{{$result->status}}</td>
                   <td>{{$result->time}}</td>
                   <td>{{$result->title}}</td>
-                  <td><textarea cols="30" rows="3" class="p-2" disabled>{{$result->description}}</textarea></td>
+                  <td><textarea class="border-0 bg-white" cols="30" rows="3" class="p-2" disabled>{{$result->description}}</textarea></td>
                   <td>
-                      @if ($result->image)
-                      <img src="{{asset('uploads/examinations/'.$result->image)}}" class="img-fluid" width="90" height="50" alt="">
+                      @if ($result->file)
+                      <a href="{{asset('uploads/examination/'.$result->file)}}" class="btn btn-warning" download>Download File</a>
                       @else
-                      <img src="https://placehold.co/600x400.png" class="img-fluid" width="90" height="50" alt="">
+                      <p class="text-danger">Examintion does not have file yet</p>
                       @endif
                     </td>
                     <td>{{$result->offer}}</td>
-                    {{-- <td>
+                    <td>
                     <div class="btn-group">
                     <button type="button" class="btn btn-info">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
@@ -107,15 +107,15 @@
                       <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <div class="dropdown-menu" role="menu" style="">
-                      <a class="dropdown-item" href="{{route('admin.examinations.edit',['result'=>$result->id])}}">Edit</a>
-                      <form action="{{route('admin.examinations.delete',['result'=>$result->id])}}" method="POST">
+                      <a class="dropdown-item" href="{{route('doctor.examination.edit',['examination'=>$result->id])}}">Edit</a>
+                      <form action="{{route('doctor.examination.delete',['examination'=>$result->id])}}" method="POST">
                         @csrf
                         @method('delete')
                           <button type='submit' class="dropdown-item">Delete</button>
                       </form>
                     </div>
                   </div>
-                </td> --}}
+                </td>
                 </tr>
                 @endforeach
             </tbody>
