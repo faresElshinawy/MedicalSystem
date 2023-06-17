@@ -31,6 +31,10 @@ class RedirectIfAuthenticated
             {
                 return redirect()->route('doctor.statistics.all');
             }
+            elseif($guard == 'patient' && Auth::guard($guard)->check())
+            {
+                return redirect()->route('home.main');
+            }
         }
 
         return $next($request);

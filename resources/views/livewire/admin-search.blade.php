@@ -36,7 +36,7 @@
               <td>{{$admin->email}}</td>
               {{-- <td>{{$admin->password}}</td> --}}
               <td>
-                @if ($admin->image)
+                @if (File::exists('Uploads/Admins/'.$admin->image))
                 <img src="{{asset('uploads/Admins/'.$admin->image)}}" class="img-fluid" width="90" height="50" alt="">
                 @else
                 <img src="https://placehold.co/600x400.png" class="img-fluid" width="90" height="50" alt="">

@@ -40,7 +40,7 @@
               <td><textarea class="border-0 bg-white" cols="30" rows="3" class="p-2" disabled>{{$doctor->description}}</textarea></td>
               <td>{{$doctor->specialty->name}}</td>
               <td>
-                @if ($doctor->image)
+                @if (File::exists('Uploads/Doctors/'.$doctor->image))
                 <img src="{{asset('uploads/doctors/'.$doctor->image)}}" class="img-fluid" width="90" height="50" alt="">
                 @else
                 <img src="https://placehold.co/600x400.png" class="img-fluid" width="90" height="50" alt="">

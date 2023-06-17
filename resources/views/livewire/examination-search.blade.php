@@ -83,10 +83,10 @@
                   <td>{{$result->Patient->name}}</td>
                   <td>{{$result->doctor->name}}</td>
                   <td>{{$result->price}}</td>
-                  <td><span class="badge badge-{{($result->status == 'pending' ? 'warning' : ($result->status == 'cancel' ? 'danger' : 'info'))}}">{{$result->status}}</span>{{$result->status}}</td>
+                  <td><span class="badge badge-{{($result->status == 'pending' ? 'warning' : ($result->status == 'cancel' ? 'danger' : 'info'))}}">{{$result->status}}</span></td>
                   <td>{{$result->time}}</td>
                   <td>{{$result->title}}</td>
-                  <td><textarea class="border-0 bg-white" cols="30" rows="3" class="p-2" disabled>{{$result->description}}</textarea></td>
+                  <td>{{$result->description}}</td>
                   <td>
                       @if ($result->file)
                       <a href="{{asset('uploads/examination/'.$result->file)}}" class="btn btn-warning" download>Download File</a>

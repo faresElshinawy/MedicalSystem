@@ -22,6 +22,10 @@ class Authenticate extends Middleware
             {
                 return redirect()->route('doctor.login');
             }
+            elseif(Route::is('patient.*'))
+            {
+                return redirect()->route('patient.login');
+            }
             return route('login');
         }
         // return $request->expectsJson() ? null : route('login');

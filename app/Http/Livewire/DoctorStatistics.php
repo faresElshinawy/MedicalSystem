@@ -27,7 +27,7 @@ class DoctorStatistics extends Component
         $doctor_id = Auth::guard('doctor')->user()->id;
         $this->patientsQuery = Patient::query();
         $this->examinationsQuery = Examination::query();
-        if($this->timeStarts)
+        if($this->timeStarts && $this->timeEnds)
         {
             $this->patientsQuery->whereBetween('time',[$this->timeStarts,$this->timeEnds])->get();
             $this->examinationsQuery->whereBetween('time',[$this->timeStarts,$this->timeEnds]);

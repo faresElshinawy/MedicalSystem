@@ -31,7 +31,7 @@
               <td>{{$specialty->id}}</td>
               <td>{{$specialty->name}}</td>
               <td>
-                @if ($specialty->image)
+                @if (File::exists('Uploads/specialties/'.$specialty->image))
                 <img src="{{asset('uploads/specialties/'.$specialty->image)}}" class="img-fluid" width="90" height="50" alt="">
                 @else
                 <img src="https://placehold.co/600x400.png" class="img-fluid" width="90" height="50" alt="">

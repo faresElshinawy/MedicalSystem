@@ -1,21 +1,22 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{route('admin.Statistics.all')}}" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{route('admin.profile.show',['admin'=>Auth::guard('admin')->user()->id])}}" class="nav-link text-info">profile</a>
-      </li>
-    </ul>
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+              <a href="{{ route('admin.Statistics.all') }}" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+              <a href="{{ route('admin.profile.show', ['admin' => Auth::guard('admin')->user()->id]) }}"
+                  class="nav-link text-info">profile</a>
+          </li>
+      </ul>
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      {{-- <!-- Navbar Search -->
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+          {{-- <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
           <i class="fas fa-search"></i>
@@ -37,8 +38,8 @@
         </div>
       </li> --}}
 
-      <!-- Messages Dropdown Menu -->
-      {{-- <li class="nav-item dropdown">
+          <!-- Messages Dropdown Menu -->
+          {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
@@ -95,9 +96,9 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
       </li> --}}
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        {{-- <a class="nav-link" data-toggle="dropdown" href="#">
+          <!-- Notifications Dropdown Menu -->
+          <li class="nav-item dropdown">
+              {{-- <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
         </a>
@@ -122,21 +123,20 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li> --}}
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
+          <li class="nav-item">
+              <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                  <i class="fas fa-expand-arrows-alt"></i>
+              </a>
+          </li>
 
-                @auth
-                <li class="nav-item d-none d-sm-inline-block">
-                    <form action="{{route('admin.logout')}}" method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-danger">logout</button>
-                    </form>
-                  </li>
-                  @endauth
-    </ul>
+          @auth
+              <li class="nav-item d-none d-sm-inline-block">
+                  <form action="{{ route('admin.logout') }}" method="post">
+                      @csrf
+                      <button type="submit" class="btn btn-danger">logout</button>
+                  </form>
+              </li>
+          @endauth
+      </ul>
   </nav>
   <!-- /.navbar -->
-
